@@ -5,14 +5,6 @@
 mkdir -p "$HOME/.cryo_utilities" &>/dev/null
 cd "$HOME/.cryo_utilities" || exit 1
 
-# Download checksum to compare with local binary, if present
-wget https://github.com/CryoByte33/steam-deck-utilities/releases/download/latest/cu.md5 -O "$HOME/.cryo_utilities/cu.md5" 2>&1
-sleep 1
-if md5sum -c --quiet cu.md5; then
-  zenity --info --text="No update necessary!" --width=300
-  exit 0
-fi
-
 # Uninstall swap resizer if present
 # Delete legacy install directory
 rm -rf "$HOME/.swap_resizer" &>/dev/null
@@ -58,14 +50,14 @@ rm -f cu.md5 &>/dev/null
 rm -f "$HOME/.cryo_utilities/launcher.sh" &>/dev/null
 
 # Install launcher script
-wget https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/launcher.sh -O "$HOME/.cryo_utilities/launcher.sh"
+wget https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/launcher.sh -O "$HOME/.cryo_utilities/launcher.sh"
 chmod +x "$HOME/.cryo_utilities/launcher.sh"
 
 # Remove old icon
 rm -f "$HOME/.cryo_utilities/cryo-utilities.png" &>/dev/null
 
 # Install Icon
-wget https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/cmd/cryoutilities/Icon.png -O "$HOME/.cryo_utilities/cryo-utilities.png"
+wget https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/cmd/cryoutilities/Icon.png -O "$HOME/.cryo_utilities/cryo-utilities.png"
 xdg-icon-resource install cryo-utilities.png --size 64
 
 # Create Desktop icons
@@ -73,7 +65,7 @@ rm -rf "$HOME"/Desktop/CryoUtilitiesUninstall.desktop 2>/dev/null
 echo '#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=Uninstall CryoUtilities
-Exec=curl https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/uninstall.sh | bash -s --
+Exec=curl https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/uninstall.sh | bash -s --
 Icon=delete
 Terminal=false
 Type=Application
@@ -95,7 +87,7 @@ rm -rf "$HOME"/Desktop/UpdateCryoUtilities.desktop 2>/dev/null
 echo "#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=Update CryoUtilities
-Exec=curl https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/install.sh | bash -s --
+Exec=curl https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/install.sh | bash -s --
 Icon=bittorrent-sync
 Terminal=false
 Type=Application
@@ -107,7 +99,7 @@ rm -rf "$HOME"/.local/share/applications/CryoUtilitiesUninstall.desktop 2>/dev/n
 echo "#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=CryoUtilities - Uninstall
-Exec=curl https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/uninstall.sh | bash -s --
+Exec=curl https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/uninstall.sh | bash -s --
 Icon=delete
 Terminal=false
 Type=Application
@@ -131,7 +123,7 @@ rm -rf "$HOME"/.local/share/applications/UpdateCryoUtilities.desktop 2>/dev/null
 echo "#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=CryoUtilities - Update
-Exec=curl https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/install.sh | bash -s --
+Exec=curl https://raw.githubusercontent.com/FishPhd/steam-deck-utilities/main/install.sh | bash -s --
 Icon=bittorrent-sync
 Terminal=false
 Type=Application
