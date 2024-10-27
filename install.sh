@@ -17,7 +17,7 @@ rm -rf ~/Desktop/SwapResizer.desktop &>/dev/null
 rm -f "$HOME/.cryo_utilities/cryo_utilities" &>/dev/null
 
 # Download binary
-wget https://github.com/FishPhd/steam-deck-utilities/releases/download/latest/cryo_utilities -O "$HOME/.cryo_utilities/cryo_utilities" 2>&1 | sed -u 's/.* \([0-9]\+%\)\ \+\([0-9.]\+.\) \(.*\)/\1\n# Downloading at \2\/s, ETA \3/' | zenity --progress --title="Downloading CU Binary, attempt $i of 3..." --auto-close --width=500
+wget https://github.com/FishPhd/steam-deck-utilities/releases/download/latest/cryo_utilities -O "$HOME/.cryo_utilities/cryo_utilities"
 
 chmod +x "$HOME/.cryo_utilities/cryo_utilities"
 # Remove old launcher
